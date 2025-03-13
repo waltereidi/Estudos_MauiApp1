@@ -14,8 +14,8 @@
         <Label 
             Text="Welcome to .NET MAUI!!!!!!!!"
             VerticalOptions="Fill" 
-            HorizontalOptions="Fill" 
-            
-            />
+            HorizontalOptions="Fill" />
+        <Button Clicked="GoToAnotherPage"></Button>
     </VerticalStackLayout>
+
 </ContentPage>

@@ -5,16 +5,89 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp1"
     Shell.FlyoutBehavior="Disabled"
-    Title="MauiApp1">
+    Title="MauiApp1"
+    
+    >
 
-    <FlyoutItem Title="Home" Icon="home.png">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="FlyoutItem" />
+
+            <!--
+            Default Styles for all Flyout Items
+            https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
+            -->
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
+            </Style>
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!--
+            Custom Style you can apply to any Flyout Item
+            -->
+            <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+
+    <!--<TabBar>
+        <Tab Title="Tiger" Icon="tiger.png" >
+            <ShellContent
+      Title="Home"
+      ContentTemplate="{DataTemplate local:FirstComponent}"
+      Route="FirstComponent" />
+        </Tab>
+        <Tab Title="Tiger" Icon="tiger.png">
+            <ShellContent
+       Title="MainPage"
+       ContentTemplate="{DataTemplate local:MainPage}"
+       Route="MainPage"
+         
+          >
+            </ShellContent>
+        </Tab>
+
+    </TabBar>-->
+
+        
+    <TabBar >
         <Tab Title="Tiger" Icon="tiger.png" >
             <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate local:FirstComponent}"
             Route="FirstComponent" />
         </Tab>
-        <Tab Title="Tiger" Icon="tiger.png">
+        <Tab Title="Tiger" Icon="tiger.png"  >
             <ShellContent
              Title="MainPage"
              ContentTemplate="{DataTemplate local:MainPage}"
@@ -23,7 +96,7 @@
                 >
             </ShellContent>
         </Tab>
-    </FlyoutItem>
-   
+    </TabBar>
+
 
 </Shell>

@@ -6,4 +6,9 @@ public partial class FirstComponent : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void GoToAnotherPage(object sender, EventArgs e)
+    {
+         Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+    }
 }
